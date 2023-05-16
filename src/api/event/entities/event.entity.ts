@@ -1,5 +1,6 @@
 import { Client } from 'src/api/client/entities/client.entity';
 import { Confirmation } from 'src/api/confirmation/entities/confirmation.entity';
+import { Location } from 'src/api/location/entities/location.entity';
 import { Message } from 'src/api/message/entities/message.entity';
 import {
   Column,
@@ -44,7 +45,10 @@ export class Event {
   @UpdateDateColumn()
   updated_at: Date;
   @ManyToMany(() => Client, (client) => client.events)
-  clients: Client[];
+  client: Client[];
+
+  @ManyToMany(() => Location, (location) => location.events)
+  location: Location[];
 
   @OneToMany(() => Message, (message) => message.event)
   messages: Message[];

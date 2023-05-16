@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CreateConfirmationDto } from './dto/create-confirmation.dto';
 import { UpdateConfirmationDto } from './dto/update-confirmation.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Confirmation } from './entities/confirmation.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ConfirmationService {
+  constructor(
+    @InjectRepository(Confirmation)
+    private confirmation: Repository<Confirmation>,
+  ) {}
   create(createConfirmationDto: CreateConfirmationDto) {
-    return 'This action adds a new confirmation';
+    return this.confirmation.save(createConfirmationDto);
   }
 
   findAll() {
-    return `This action returns all confirmation`;
+    return this.confirmation.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} confirmation`;
+    return this.confirmation.findOneBy({ id });
   }
 
   update(id: number, updateConfirmationDto: UpdateConfirmationDto) {
-    return `This action updates a #${id} confirmation`;
+    return this.confirmation.update({ id }, updateConfirmationDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} confirmation`;
+    return this.confirmation.delete(id);
   }
 }

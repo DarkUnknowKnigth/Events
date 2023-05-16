@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ConfirmationService } from './confirmation.service';
 import { CreateConfirmationDto } from './dto/create-confirmation.dto';
 import { UpdateConfirmationDto } from './dto/update-confirmation.dto';
 
-@Controller('confirmation')
+@Controller('confirmations')
 export class ConfirmationController {
   constructor(private readonly confirmationService: ConfirmationService) {}
 
@@ -23,7 +31,10 @@ export class ConfirmationController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateConfirmationDto: UpdateConfirmationDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateConfirmationDto: UpdateConfirmationDto,
+  ) {
     return this.confirmationService.update(+id, updateConfirmationDto);
   }
 

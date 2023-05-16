@@ -1,7 +1,9 @@
+import { Event } from 'src/api/event/entities/event.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -20,4 +22,6 @@ export class Location {
   created_at: Date;
   @UpdateDateColumn()
   updated_at: Date;
+  @OneToMany(() => Event, (event) => event.location)
+  events: Event[];
 }

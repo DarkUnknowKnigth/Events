@@ -3,10 +3,12 @@ import { Confirmation } from 'src/api/confirmation/entities/confirmation.entity'
 import { Message } from 'src/api/message/entities/message.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 export type StatusFormat = 'scheduled' | 'invited' | 'checked' | 'ended';
@@ -37,6 +39,10 @@ export class Event {
   })
   status: StatusFormat;
 
+  @CreateDateColumn()
+  created_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
   @ManyToMany(() => Client, (client) => client.events)
   clients: Client[];
 

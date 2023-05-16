@@ -1,25 +1,23 @@
-import { Event } from 'src/api/event/entities/event.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Message {
+export class Location {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  body: string;
-  @Column({ type: 'date' })
-  date: Date;
+  name: string;
+  @Column()
+  address: string;
+  @Column({ default: false })
+  active: boolean;
   @CreateDateColumn()
   created_at: Date;
   @UpdateDateColumn()
   updated_at: Date;
-  @ManyToOne(() => Event, (event) => event.messages)
-  event: Event;
 }

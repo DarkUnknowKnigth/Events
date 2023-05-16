@@ -19,6 +19,8 @@ import { Event } from './api/event/entities/event.entity';
 import { Message } from './api/message/entities/message.entity';
 import { Role } from './api/role/entities/role.entity';
 import { User } from './api/user/entities/user.entity';
+import { LocationModule } from './api/location/location.module';
+import { Location } from './api/location/entities/location.entity';
 
 @Module({
   imports: [
@@ -49,10 +51,12 @@ import { User } from './api/user/entities/user.entity';
           Mod,
           Role,
           User,
+          Location,
         ],
       }),
     }),
     BusinessModule,
+    LocationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -2,10 +2,12 @@ import { Confirmation } from 'src/api/confirmation/entities/confirmation.entity'
 import { Event } from 'src/api/event/entities/event.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -26,7 +28,10 @@ export class Client {
   allergic: boolean;
   @Column({ default: null })
   allergies: string;
-
+  @CreateDateColumn()
+  created_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
   @ManyToMany(() => Event, (event) => event.clients)
   events: Event[];
 

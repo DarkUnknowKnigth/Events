@@ -55,6 +55,7 @@ import { Location } from './api/location/entities/location.entity';
         ],
       }),
     }),
+    TypeOrmModule.forFeature([User]),
     BusinessModule,
     LocationModule,
   ],

@@ -45,7 +45,7 @@ export class Event {
   @UpdateDateColumn()
   updated_at: Date;
   @ManyToMany(() => Client, (client) => client.events)
-  client: Client[];
+  clients: Client[];
 
   @ManyToMany(() => Location, (location) => location.events)
   location: Location[];

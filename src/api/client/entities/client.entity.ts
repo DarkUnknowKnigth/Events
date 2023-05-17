@@ -32,7 +32,7 @@ export class Client {
   created_at: Date;
   @UpdateDateColumn()
   updated_at: Date;
-  @ManyToMany(() => Event, (event) => event.client)
+  @ManyToMany(() => Event, (event) => event.clients)
   events: Event[];
 
   @OneToMany(() => Confirmation, (confirmation) => confirmation.client)

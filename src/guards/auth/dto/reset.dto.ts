@@ -1,11 +1,11 @@
 import { IsNotEmpty } from 'class-validator';
-export class CreateUserDto {
+export class ResetDto {
   @IsNotEmpty()
   email: string;
   @IsNotEmpty()
   password: string;
   @IsNotEmpty()
-  active: boolean;
-  created_at: Date;
-  updated_at: Date;
+  confirmation: string;
+  @IsNotEmpty()
+  code: number;
 }

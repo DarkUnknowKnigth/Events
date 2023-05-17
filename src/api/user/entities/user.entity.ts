@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Role } from 'src/api/role/entities/role.entity';
 import {
   Column,
@@ -14,10 +15,11 @@ export class User {
   id: number;
   @Column()
   email: string;
+  @Exclude()
   @Column()
   password: string;
   @Column({ default: true })
-  active: string;
+  active: boolean;
   @CreateDateColumn()
   created_at: Date;
   @UpdateDateColumn()

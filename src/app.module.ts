@@ -21,6 +21,8 @@ import { Role } from './api/role/entities/role.entity';
 import { User } from './api/user/entities/user.entity';
 import { LocationModule } from './api/location/location.module';
 import { Location } from './api/location/entities/location.entity';
+import { JwtModule } from '@nestjs/jwt';
+import { constants } from './guards/auth/auth.constants';
 
 @Module({
   imports: [
@@ -56,6 +58,11 @@ import { Location } from './api/location/entities/location.entity';
       }),
     }),
     TypeOrmModule.forFeature([User]),
+    JwtModule.register({
+      global: true,
+      secret: constants.secret,
+      signOptions: { expiresIn: '1h' },
+    }),
     BusinessModule,
     LocationModule,
   ],
